@@ -1,0 +1,10 @@
+<openerp>
+    <data noupdate="1">
+        <record id="partner_pos_generic" model="product.attribute">
+            <field name="name">Color</field>
+        </record>
+        <record id="partner_pos_generic2" model="product.attribute">
+            <field name="name">Talle</field>
+        </record>
+    </data>
+</openerp>

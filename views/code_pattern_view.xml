@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="dtm_product_code_pattern_form_view" model="ir.ui.view">
+            <field name="name">product.pattern.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Code Pattern">
+                        <h1>
+                        <group string="Asignación de códigos para productos">
+                            <button name="compute_values" string="Actualizar lista de valores" type="object"/>
+                            <button name="compute_codes" string="Calculo de codigos para productos" type="object"/>
+                        </group>
+                        </h1>
+                        <field name="code_pattern" widget="one2many_list" mode="tree">
+                            <tree string="Code Pattern" editable="bottom">
+                                <field name="prod" readonly="1" string="Producto"/>
+                                <field name="name_att_val" readonly="1" string="Atributos"/>
+                                <field name="code" string="Código de Producto"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+        <record id="dtm_product_template_only_form_view" model="ir.ui.view">
+            <field name="name">product.pattern.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_code']" position="replace">
+                        <field name="referencia_fabricante" string="Codigo de referencia del fabricante"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="dtm_product_product_code_pattern_replace" model="ir.ui.view">
+            <field name="name">product.product.pattern.form.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_code']" position="replace">
+                        <field name="codigo_venta" string="Codigo de producto"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="dtm_tree_variant_code_patern" model="ir.ui.view">
+            <field name="name">product.product.pattern.tree.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='ean13']" position="after">
+                        <field name="codigo_venta" string="Codigo de producto"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
